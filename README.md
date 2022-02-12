@@ -2,4 +2,4 @@
 
 ## For Proximity 0.6.1
 
-![alt text](https://github.com/myojin223/BorderlessM/blob/main/BorderlessM/Preview%20Images/%5BPreview%5D%20Arid%20Mesa%20(BorderlessM).jpg?raw=true)
+![alt text](https://github.com/myojin223/Classic/blob/main/Classic/Preview%20Cards/Blade%20of%20the%20Oni%20(Classic).png?raw=true)
