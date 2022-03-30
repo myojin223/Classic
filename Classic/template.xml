@@ -12,7 +12,7 @@
         <!-- Whether or not to render the copyright text -->
         <ToggleOption id="flavor_text" default="true"/>
         <!-- Whether or not to render the flavor bar -->
-        <ToggleOption id="flavor_bar" default="true"/>
+        <ToggleOption id="flavor_bar" default="false"/>
         <ToggleOption id="show_set_symbol" default="true"/>
         <!-- Uses the cards set symbol as a watermark -->
         <ToggleOption id="set_symbol_watermark" default="false"/>
@@ -588,7 +588,7 @@
                 </Selector>
                 <SquishBox id="title_bar">
                     <Main id="cost">
-                        <HorizontalLayout x="2925" y="475" alignment="end">
+                        <HorizontalLayout x="2915" y="470" alignment="end">
                             <Spacer width="50" height="15"/>
                             <Text value="${mana_cost}">
                                 <Style font="NDPMTG" size="175">
@@ -624,7 +624,9 @@
                                 </Conditions>
                             </Selector>
                             <Text x="440" y="475" value="${name}">
-                                <Style font="Goudy Medieval Alternate" color="#FFFFFF" size="160"/>
+                                <Style font="Goudy Medieval Alternate" color="#FFFFFF" size="160">
+									<Shadow color="#000000" dX="5" dY="5"/>
+								</Style>
                             </Text>
                         </Selector>
                     </Flex>
@@ -639,47 +641,19 @@
                     </Conditions>
                 </Text>
                 <SquishBox>
-                    <Main id="set_symbol">
-                        <Spacer x="2575" y="2470" width="250" height="160"/>
-                        <Group>
-                            <Selector>
-                                <!-- Certain sets don't use a uniform color palette, so this is a necessary evil -->
-                                <SVG x="2850" y="2553" src="${rarity}/${proximity.options.set_symbol}" width="242" height="154" horizontal_alignment="end">
-                                    <Conditions>
-                                        <FileExists src="${rarity}/${proximity.options.set_symbol}.svg"/>
-                                    </Conditions>
-                                </SVG>
-                                <SVG x="2850" y="2553" src="${proximity.options.set_symbol}" width="242" height="154" horizontal_alignment="end">
-                                    <Conditions>
-                                        <FileExists src="${proximity.options.set_symbol}.svg"/>
-                                    </Conditions>
-                                </SVG>
-                            </Selector>
-                            <CardModifier key="proximity.options.set_symbol" value="pz1">
-                                <Or>
-                                    <Not>
-                                        <IsPresent key="proximity.options.set_symbol"/>
-                                    </Not>
-                                    <Not>
-                                        <FileExists src="${proximity.options.set_symbol}.svg"/>
-                                    </Not>
-                                </Or>
-                            </CardModifier>
-                            <Conditions>
-                                <IsEquals key="proximity.options.show_set_symbol"/>
-                            </Conditions>
-                        </Group>
-                    </Main>
+                    
                     <Flex>
                         <Selector id="types">
-                            <Text id="back" x="435" y="2600" value="${type_line}">
+                            <Text id="back" x="453" y="2608" value="${type_line}">
                                 <AttributeModifier name="x" value="531">
                                     <IsPresent key="color_indicator"/>
                                     <FileExists src="~/overlays/color_indicators/$join{color_indicator}.png"/>
                                 </AttributeModifier>
                             </Text>
-                            <Style font="Beleren2016-Bold" color="#FFFFFF" size="135" kerning="2"/>
-                            <Style font="Beleren2016-Bold" color="#FFFFFF" size="135" kerning="2">
+                            <Style font="MPlantin" color="#FFFFFF" size="150" kerning="2">
+                                <Shadow color="#000000" dX="3" dY="3"/>
+                            </Style>
+                            <Style font="MPlantin" color="#FFFFFF" size="150" kerning="2">
                                 <Conditions>
                                     <IsPresent key="layout"/>
                                     <Or>
@@ -730,14 +704,18 @@
                         <Image id="gold"/>
                     </Selector>
                     <Selector>
-                        <Text id="vehicle" x="2725" y="4085" alignment="center" value="${power}/${toughness}">
-                            <Style font="Beleren2016-Bold" color="#FFFFFF" size="160"/>
+                        <Text id="vehicle" x="2740" y="4077" alignment="center" value="${power}/${toughness}">
+                            <Style font="MPlantin-Bold" color="#FFFFFF" size="180">
+                                <Shadow color="#000000" dX="10" dY="5"/>
+                            </Style>
                             <Conditions>
                                 <IsPresent key="proximity.mtg.types.vehicle"/>
                             </Conditions>
                         </Text>
-                        <Text id="creature" x="2725" y="4085" alignment="center" value="${power}/${toughness}">
-                            <Style font="Beleren2016-Bold" color="#FFFFFF" size="160"/>
+                        <Text id="creature" x="2740" y="4077" alignment="center" value="${power}/${toughness}">
+                            <Style font="MPlantin-Bold" color="#FFFFFF" size="180">
+                                <Shadow color="#000000" dX="10" dY="5"/>
+                            </Style>
                             <Conditions>
                                 <IsPresent key="proximity.mtg.types.creature"/>
                             </Conditions>
@@ -754,13 +732,13 @@
                     <Selector id="basics">
                         <Effect name="brightness" amount="-15%">
                             <Mask>
-                                <Image src="flavor/$join{colors}" x="1644" y="3400" horizontal_alignment="middle" vertical_alignment="middle"/>
+                                <Image src="flavor/$join{colors}" x="1644" y="3300" horizontal_alignment="middle" vertical_alignment="middle"/>
                             </Mask>
                             <Conditions>
                                 <IsPresent key="flavor_text"/>
                             </Conditions>
                         </Effect>
-                        <Image src="standard/$join{colors}" x="1644" y="3400" horizontal_alignment="middle" vertical_alignment="middle"/>
+                        <Image src="standard/$join{colors}" x="1644" y="3300" horizontal_alignment="middle" vertical_alignment="middle"/>
                         <Conditions>
                             <IsPresent key="proximity.mtg.types.basic"/>
                             <IsEquals key="proximity.mtg.color_count" value="1"/>
@@ -778,7 +756,7 @@
                                         <FileExists src="${proximity.options.watermark}.png"/>
                                     </Conditions>
                                 </Image>
-                                <SVG src="${proximity.options.watermark}" x="1644" y="3420" width="1398" height="1015">
+                                <SVG src="${proximity.options.watermark}" x="1644" y="3300" width="1398" height="1015">
                                     <Conditions>
                                         <FileExists src="${proximity.options.watermark}.svg"/>
                                     </Conditions>
@@ -884,39 +862,15 @@
                     <Style font="MPlantin" italicFont="MPlantin-Italic" color="#000000" size="125"/>
                 </Group>
                 <Group id="bottom_text">
-                    <HorizontalLayout id="set_lang_and_artist" x="445" y="4075">
-                        <Text y="2" value="${set}">
-                            <Style font="Gotham-Medium-Regular" size="68" capitalization="all_caps" kerning="10">
-                                <Outline color="#000000" weight="0"/>
-                            </Style>
-                        </Text>
-                        <Spacer height="5" width="13"/>
-                        <Text value="•">
-                            <Style font="Altone" size="69"/>
-                        </Text>
-                        <Spacer height="5" width="28"/>
-                        <Text id="lang" value="${lang}" y="2">
-                            <Style font="Gotham-Medium-Regular" size="68" capitalization="all_caps" kerning="12"/>
-                        </Text>
-                        <Spacer height="5" width="27"/>
+                    <HorizontalLayout id="set_lang_and_artist" x="453" y="4030">
                         <HorizontalLayout>
-                            <Text id="brush" y="2" value="a">
-                                <Style font="NDPMTG" size="80"/>
-                            </Text>
-                            <Spacer height="5" width="26"/>
-                            <Text id="artist" value="${artist}">
-                                <Style font="Beleren Small Caps" size="75" kerning="1.5"/>
+                            <Text id="artist" value="Illus. © ${artist}">
+                                <Style font="MPlantin" size="103" kerning="1.5">
+                                    <Shadow color="#000000" dX="5" dY="5"/>
+                                </Style>
                             </Text>
                         </HorizontalLayout>
                     </HorizontalLayout>
-                    <Group id="disclaimer">
-                        <Text x="445" y="3997" value="2021 Custom Proxy">
-                            <Style font="Altone" size="70"/>
-                        </Text>
-                        <Text value="NOT FOR SALE" x="1110" y="4002">
-                            <Style font="Beleren2016-Bold" size="71" kerning="1"/>
-                        </Text>
-                    </Group>
                     <Selector id="copyright">
                         <Text value="™ &amp; © 2021 Wizards of the Coast" alignment="right" x="3066" y="4073">
                             <Style font="MPlantin" size="68"/>
