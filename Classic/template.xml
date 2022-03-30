@@ -864,7 +864,7 @@
                 <Group id="bottom_text">
                     <HorizontalLayout id="set_lang_and_artist" x="453" y="4030">
                         <HorizontalLayout>
-                            <Text id="artist" value="Illus. © ${artist}">
+                            <Text id="artist" value="Illus. ${artist}">
                                 <Style font="MPlantin" size="103" kerning="1.5">
                                     <Shadow color="#000000" dX="5" dY="5"/>
                                 </Style>
