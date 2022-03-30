@@ -54,4 +54,4 @@
 
 I had a little problem with `Deathrite Shaman` where it said that I needed to add a `backgrounds/standard/BG.png` file. I just took any other file in the `backgrounds/standard/` folder, copied it and named it `BG.png` and the error was gone!
 
-![Preview card](https://github.com/myojin223/Classic/blob/main/Classic/Preview%20Cards/Blade%20of%20the%20Oni%20(Classic).png?raw=true)
+![Preview card](Classic/Preview/preview.png)
