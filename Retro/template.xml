@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 
-<Template name="M15 Master" author="ChilliAxe and Haven King" width="3288" height="4488"
-          proximity_version="0.6.1"
+<Template name="Retro" author="WarpDandy" width="3288" height="4488"
+          proximity_version="0.6.2"
           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="https://hephaestus.dev/proximity/template.xsd">
     <Options>
         <!-- Outline the text at the bottom of the card (copyright, artist credit, etc.) -->
         <ToggleOption id="bottom_text_outline" default="false"/>
         <!-- Whether or not to render flavor text -->
-        <ToggleOption id="copyright" default="true"/>
+        <ToggleOption id="copyright" default="false"/>
         <!-- Whether or not to render the copyright text -->
         <ToggleOption id="flavor_text" default="true"/>
         <!-- Whether or not to render the flavor bar -->
-        <ToggleOption id="flavor_bar" default="true"/>
+        <ToggleOption id="flavor_bar" default="false"/>
         <ToggleOption id="show_set_symbol" default="true"/>
         <!-- Uses the cards set symbol as a watermark -->
         <ToggleOption id="set_symbol_watermark" default="false"/>
